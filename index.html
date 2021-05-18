@@ -38,7 +38,8 @@
                                 class="fa fa-address-card fa-lg"></span> Contact</a></li>
                 </ul>
                 <span class="navbar-text">
-                    <a data-toggle="modal" data-target="#loginModal">
+                    <!-- <a data-toggle="modal" data-target="#loginModal"> -->
+                    <a id="login">
                         <span class="fa fa-sign-in"></span>
                         Login
                     </a>
@@ -52,13 +53,13 @@
     <div id="loginModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" id="modalheader">
                     <h4 class="modal-title">Login</h4>
                     <button type="button" class="close" data-dismiss="modal">
                         &times;
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="modalbody">
                     <form>
                         <div class="form-row">
                             <div class="form-group col-sm-4">
@@ -96,17 +97,14 @@
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" id="reserveheader">
                     <h5 class="modal-title" id="exampleModalLabel">Reserve a Table</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="row col-sm bg-warning">
-                            <h2>Reserve a Table</h2>
-                        </div>
+                <div class="modal-body" id="reservebody">
+                    <form id="form">
                         <label for="Numberofguests" class="col-sm col-form-label">Number of guests: </label>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input inline" type="radio" name="inlineRadioOptions"
@@ -164,7 +162,7 @@
 
                     </form>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" id="reservefooter">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-primary">Reserve</button>
                 </div>
@@ -186,8 +184,10 @@
                 </div>
                 <div class="col-12 col-sm self-center">
                     <img src="./img/logo.png" alt="" class="img-fluid">
-                    <a class="btn btn-warning" role="button" href="#reserve" data-toggle="modal"
-                        data-target="#reserve">Reserve a Table</a>
+                    <a class="btn btn-warning" role="button" href="#reserve" id="reserve1">Reserve a Table</a>
+                    <!-- data-toggle="modal" 
+                        data-target="#reserve"> || Parts of modal (disconnected) -->
+
 
                 </div>
 
@@ -363,7 +363,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row justofy-content-center">
+            <div class="row justify-content-center">
                 <div class="col-auto">
                     <p>© Copyright 2018 Ristorante Con Fusion</p>
                 </div>
@@ -374,18 +374,38 @@
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script> $("#carouselButton").click(function(){
-        if ($("#carouselButton").children("span").hasClass('fa-pause')) {
-            $("#mycarousel").carousel('pause');
-            $("#carouselButton").children("span").removeClass('fa-pause');
-            $("#carouselButton").children("span").addClass('fa-play');
-        }
-        else if ($("#carouselButton").children("span").hasClass('fa-play')){
-            $("#mycarousel").carousel('cycle');
-            $("#carouselButton").children("span").removeClass('fa-play');
-            $("#carouselButton").children("span").addClass('fa-pause');                    
-        }
-    }); </script>
+    <!-- Js Code for Lgin Modal -->
+    <script>
+        $(document).ready(function () {
+            $("#login").click(function () { //On Button click
+                $("#loginModal").modal(); // Open modal with this Id.
+            });
+        });
+    </script>
+    <!-- Js Code for Reserve Modal -->
+    <script>
+        $(document).ready(function () {
+            $("#reserve1").click(function () { //On Button click
+                $("#reserve").modal();  // Open modal with this Id.
+            });
+        });
+    </script>
+    <script> $("#carouselButton").click(function () { // Code for carousal
+            if ($("#carouselButton").children("span").hasClass('fa-pause')) {
+                $("#mycarousel").carousel('pause');
+                $("#carouselButton").children("span").removeClass('fa-pause');
+                $("#carouselButton").children("span").addClass('fa-play');
+            }
+            else if ($("#carouselButton").children("span").hasClass('fa-play')) {
+                $("#mycarousel").carousel('cycle');
+                $("#carouselButton").children("span").removeClass('fa-play');
+                $("#carouselButton").children("span").addClass('fa-pause');
+            }
+        });</script>
 </body>
 
 </html>
+
+<!-- // If you ever get an error while installing any specific node package 
+// remember that it may be due to uncompatible hardware so try installing 
+// without mentioning any specific version it may work. -->
